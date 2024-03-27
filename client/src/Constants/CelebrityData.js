@@ -1,5 +1,5 @@
 import apj from "../Assets/Images/apj.png";
-import billGates from "../Assets/Images/billGates(1).png";
+import billGates from "../Assets/Images/billGate.png";
 import einstein from "../Assets/Images/einstein.png";
 import nelsonMandela from "../Assets/Images/nelsonMandela.png";
 import steveJobs from "../Assets/Images/steveJobs.png";
