@@ -2,16 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
 import axiosInstance from "../../Helpers/axiosinstance";
-
+import { AiOutlineConsoleSql } from "react-icons/ai";
+const storedData = localStorage.getItem("data");
 const initialState = {
   isLoggedIn: localStorage.getItem("isLoggedIn") || false,
   role: localStorage.getItem("role") || "",
-  data: localStorage.getItem("data")
-    ? JSON.parse(localStorage.getItem("data"))
-    : {},
+  data: localStorage.getItem("data") ? JSON.parse(storedData) : {},
 };
 
-export const creatAccount = createAsyncThunk("/auth/singup", async (data) => {
+export const creatAccount = createAsyncThunk("auth/singup", async (data) => {
   try {
     const res = axiosInstance.post("user/register", data);
     toast.promise(res, {
@@ -40,6 +39,7 @@ export const login = createAsyncThunk("/auth/login", async (data) => {
     return (await res).data;
   } catch (error) {
     toast.error(error?.response?.data?.message);
+    console.log(error);
   }
 });
 
