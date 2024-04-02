@@ -5,6 +5,8 @@ import express from "express";
 import morgan from "morgan";
 import errorMiddlware from "./middlewares/error.middleware.js";
 import userRoutes from "./routes/user.Routes.js";
+import courseRoutes from "./routes/course.Routes.js";
+import miscRoutes from "./routes/miscellanous.routes.js";
 
 config();
 
@@ -28,7 +30,16 @@ app.use(cookieParser());
 
 app.use(morgan("dev"));
 
+app.use("/ping", function (_req, res) {
+  res.send("Pong");
+});
+
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/course", courseRoutes);
+app.use("/api/v1", miscRoutes);
+app.all("*", (_req, res) => {
+  res.status(404).send("OOPS!!  404 page not found ");
+});
 
 app.get("/", (req, res) => {
   res.send("<h1>hii</h1>");

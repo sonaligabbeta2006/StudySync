@@ -4,15 +4,15 @@ import nodemailer from "nodemailer";
 const sendEmail = async function (email, subject, message) {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
+    service: "gmail",
     secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.SMTP_USERNAME,
       pass: process.env.SMTP_PASSWORD,
     },
   });
-
+  //N1V5Y7PM91N8YNJGJ2G32R86
+  //lorh zaok utzl chsw
   // send mail with defined transport object
   await transporter.sendMail({
     from: process.env.SMTP_FROM_EMAIL, // sender address
