@@ -5,8 +5,10 @@ import HomeLayout from "../../Layouts/HomeLayout";
 import { getAllCourse } from "../../Redux/Slices/CourseSlice";
 import { useDispatch, useSelector } from "react-redux";
 function CourseList() {
+
   const dispatch = useDispatch();
   const { courseData } = useSelector((state) => state.course);
+  
   async function loadCourses() {
     await dispatch(getAllCourse());
   }
